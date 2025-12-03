@@ -97,7 +97,7 @@ def callback():
 
 @handler.add(MessageEvent, message=LocationMessageContent)
 def handle_location(event):
-    user_id = event.message.source.user_id
+    user_id = event.source.user_id
     lat = event.message.latitude
     lon = event.message.longitude
     save_user_location(user_id, lat, lon)
@@ -105,7 +105,7 @@ def handle_location(event):
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    user_id = event.message.source.user_id
+    user_id = event.source.user_id
     location = get_user_location(user_id)
 
     with ApiClient(configuration) as api_client:
