@@ -101,13 +101,13 @@ def handle_message(event):
     location = get_user_location(user_id)
     if location:
         with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[TextMessage(text=reply_text)]
+            line_bot_api = MessagingApi(api_client)
+            line_bot_api.reply_message_with_http_info(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text=reply_text)]
+                )
             )
-        )
     else:
         reply_req = ReplyMessageRequest(
             reply_token=event.reply_token,
