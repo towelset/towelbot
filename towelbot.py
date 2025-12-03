@@ -116,7 +116,7 @@ def handle_message(event):
                     text="請點選下方按鈕分享您的位置：",
                     quick_reply=QuickReply(
                         items=[
-                            QuickReplyButton(
+                            QuickReplyItem(
                                 action=LocationAction(label="傳送目前位置")
                             )
                         ]
