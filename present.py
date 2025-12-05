@@ -67,25 +67,7 @@ def handle_message(event):
                     )
                 ]
             )
-        elif not image:
-            reply_req = ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[
-                    TextMessage(
-                        text="Oh no, image not found."
-                    )
-                ]
-            )
-        else:
-            reply_req = ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[
-                    TextMessage(
-                        text='I have no idea what happened.'
-                    )
-                ]
-            )
-        line_bot_api.reply_message_with_http_info(reply_req)
+            line_bot_api.reply_message_with_http_info(reply_req)
 
 if __name__ == "__main__":
     app.run()
