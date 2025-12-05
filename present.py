@@ -58,11 +58,11 @@ def handle_message(event):
                 reply_token=event.reply_token,
                 messages={
                     "type": "image",
-                    "originalContentUrl": image_list[image_number],
-                    "previewImageUrl": image_list[image_number]
+                    "originalContentUrl": image_list[image_number - 1],
+                    "previewImageUrl": image_list[image_number - 1]
                 }
             )
-        line_bot_api.reply_message_with_http_info(reply_req)
+            line_bot_api.reply_message_with_http_info(reply_req)
 
 
 if __name__ == "__main__":
