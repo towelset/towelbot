@@ -52,18 +52,17 @@ def handle_message(event):
     user_message = event.message.text
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
-        image_number = random.randint(1, 3)
         if user_message == '嗨' or user_message == '你好' or user_message.lower() == 'hi' or user_message.lower() == 'hello':
+            image_number = random.randint(0, 2)
             reply_req = ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages={
+                messages=[{
                     "type": "image",
-                    "originalContentUrl": image_list[image_number - 1],
-                    "previewImageUrl": image_list[image_number - 1]
-                }
+                    "originalContentUrl": image_list[image_number],
+                    "previewImageUrl": image_list[image_number]
+                }]
             )
             line_bot_api.reply_message_with_http_info(reply_req)
-
 
 if __name__ == "__main__":
     app.run()
