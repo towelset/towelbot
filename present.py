@@ -64,7 +64,7 @@ def handle_message(event):
                     )
                 ]
             )
-        if not image:
+        elif not image:
             reply_req = ReplyMessageRequest(
                 reply_token=event.reply_token,
                 messages=[
