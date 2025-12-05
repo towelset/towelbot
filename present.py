@@ -49,7 +49,7 @@ def callback():
 image_list = ['https://pasteboard.co/0hh3WPbsIp4i.png', 'https://i.ytimg.com/vi/0hD69lbpbHI/mqdefault.jpg', 'https://megapx-assets.dcard.tw/images/ee292ca7-b199-4513-8401-9229c90acc5f/640.jpeg',
               'https://megapx-assets.dcard.tw/images/73d1d3c8-43ae-4798-9445-c6c7b8098223/640.jpeg', 'https://megapx-assets.dcard.tw/images/73d1d3c8-43ae-4798-9445-c6c7b8098223/640.jpeg',
               'https://megapx-assets.dcard.tw/images/f02e06d9-8f31-4f83-a2a0-f1a05bc85cf0/640.jpeg', 'https://megapx-assets.dcard.tw/images/8b440036-56f6-4f06-ba9e-51f1e1392963/640.jpeg',
-              'https://pasteboard.co/TohIal6xkRnm.png', 'https://pasteboard.co/3dvpagitayPv.png']
+              'https://gcdnb.pbrd.co/images/TohIal6xkRnm.png', 'https://gcdnb.pbrd.co/images/3dvpagitayPv.png?o=1']
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
