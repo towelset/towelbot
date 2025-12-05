@@ -12,6 +12,7 @@ from linebot.v3.messaging import (
     MessagingApi,
     ReplyMessageRequest,
     TextMessage,
+    ImageMessage,
     QuickReply,
     QuickReplyItem
 )
@@ -45,24 +46,43 @@ def callback():
 
     return 'OK'
 
-image_list = ['https://ibb.co/GvwTS57J', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSyJZJYD1zkfS20r2T64Iukda_ij0URw0tAQ&s', 'https://megapx-assets.dcard.tw/images/ee292ca7-b199-4513-8401-9229c90acc5f/640.jpeg']
+image_list = ['https://i.ibb.co/QFBdwK9c/2025-12-05-6-02-39.png', 'https://i.ytimg.com/vi/0hD69lbpbHI/mqdefault.jpg', 'https://megapx-assets.dcard.tw/images/ee292ca7-b199-4513-8401-9229c90acc5f/640.jpeg']
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     user_message = event.message.text
+    image = random.choice(image_list)
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if user_message == '嗨' or user_message == '你好' or user_message.lower() == 'hi' or user_message.lower() == 'hello':
-            image_number = random.randint(0, 2)
             reply_req = ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[{
-                    "type": "image",
-                    "originalContentUrl": image_list[image_number],
-                    "previewImageUrl": image_list[image_number]
-                }]
+                messages=[
+                    ImageMessage(
+                        original_content_url=image,
+                        preview_image_url=image
+                    )
+                ]
             )
-            line_bot_api.reply_message_with_http_info(reply_req)
+        if not image:
+            reply_req = ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[
+                    TextMessage(
+                        text="Oh no, image not found."
+                    )
+                ]
+            )
+        else:
+            reply_req = ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[
+                    TextMessage(
+                        text='I have no idea what happened.'
+                    )
+                ]
+            )
+        line_bot_api.reply_message_with_http_info(reply_req)
 
 if __name__ == "__main__":
     app.run()
