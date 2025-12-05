@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 configuration = Configuration(
     access_token='jh6odJ/JkJ8CvC+9SNnLvAyLPQE/3bIFv01WopP8WGXyLCYzaWniYEKuIl8mcFSGET6M0MVvu8F+92Asyb2kkvpE1wE5hOcMxOYMgYNbB2q80VjPHAIH+uL3T+PA3BJSCfpTXj1+sAJ+di8eGMhhOwdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('daeb40795e3abd094939199d0ebffc2c')
+handler = WebhookHandler('8c9300fbaf4aa60be0cfb48170415380')
 
 @app.route("/callback", methods=['POST'])
 def callback():
